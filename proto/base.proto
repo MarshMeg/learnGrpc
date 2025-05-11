@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package base;
+option go_package = "github.com/MarshMeg/learnGrpc/gen/base";
 
 message RequestMeta {
   enum Client {

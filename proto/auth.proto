@@ -1,8 +1,14 @@
 syntax = "proto3";
 
 package auth;
+option go_package = "github.com/MarshMeg/learnGrpc/gen/auth";
 
 import "base.proto";
+
+service Auth {
+  rpc Register(RegisterRequest) returns (RegisterAnswer);
+  rpc Login(LoginRequest) returns (LoginAnswer);
+}
 
 // register
 message RegisterRequest {
@@ -37,9 +43,4 @@ message ValidateUser {
 message ValidateUserAnswer {
   base.AnswerMeta meta = 1;
   string username = 2;
-}
-
-service Auth {
-  rpc Register(RegisterRequest) returns (RegisterAnswer);
-  rpc Login(LoginRequest) returns (LoginAnswer);
 }
