@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package auth;
+
+import "base.proto";
+
+// register
+message RegisterRequest {
+  base.RequestMeta meta = 1;
+  string login = 2;
+  string password = 3;
+}
+
+message RegisterAnswer {
+  base.AnswerMeta meta = 1;
+  string token = 2;
+}
+
+// login
+message LoginRequest {
+  base.RequestMeta meta = 1;
+  string login = 2;
+  string password = 3;
+}
+
+message LoginAnswer {
+  base.AnswerMeta meta = 1;
+  string token = 2;
+}
+
+// validate user
+message ValidateUser {
+  base.RequestMeta meta = 1;
+  bytes id = 2;
+}
+
+message ValidateUserAnswer {
+  base.AnswerMeta meta = 1;
+  string username = 2;
+}
+
+service Auth {
+  rpc Register(RegisterRequest) returns (RegisterAnswer);
+  rpc Login(LoginRequest) returns (LoginAnswer);
+}

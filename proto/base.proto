@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package base;
+
+message RequestMeta {
+  enum Client {
+    API = 0;
+    SERVICE = 1;
+  }
+
+  Client cli = 1;
+  string access_key = 2;
+}
+
+message AnswerMeta {
+  enum Status {
+    READY = 0;
+    QUEUE = 1;
+    ERROR = 2;
+  }
+
+  Status status = 1;
+  uint64 server_time = 2;
+  optional string queue_id = 3;
+}
